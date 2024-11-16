@@ -23,30 +23,34 @@ const MovieCard = (props) => {
       <h2 className='movie-heading'>{props.title}</h2>
       <Swiper
         slidesPerView={6}
-        // spaceBetween={50}
-        // breakpoints={{
-        //   200:{
-        //     // centeredSlides:true,
-        //       slidesPerView: 1,
-        //       spaceBetween: 0,
-        //   },
-        //   420:{
-        //       slidesPerView: 2,
-        //       spaceBetween: 5,
-        //   },
-        //   640: {
-        //     slidesPerView: 3,
-        //     spaceBetween: 10,
-        //   },
-        //   830: {
-        //     slidesPerView: 4,
-        //     spaceBetween: 20,
-        //   },
-        //   1024: {
-        //     slidesPerView: 6,
-        //     spaceBetween: 30,
-        //   },
-        // }}
+        spaceBetween={10}
+        breakpoints={{
+          200:{
+            // centeredSlides:true,
+              slidesPerView: 1,
+              spaceBetween: 0,
+          },
+          295:{
+              slidesPerView: 2,
+              spaceBetween: 0,
+          },
+          440: {
+            slidesPerView: 3,
+            spaceBetween: 2,
+          },
+          860: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+          },
+          1100: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+          1300:{
+            slidesPerView: 6,
+            spaceBetween: 40,
+          }
+        }}
         modules={[Pagination]}
         className="mySwiper1"
       >

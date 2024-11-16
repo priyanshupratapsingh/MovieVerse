@@ -1,0 +1,20 @@
+@media (max-width: 645px){
+    .swipe-head1{
+        width: 140px;
+        /* border-radius: 3rem; */
+    }
+    .movie-heading{
+        font-size: 1.3rem;
+        font-weight: 500;
+        padding: 30px 0px 20px 0;
+    }
+    .head-data1{
+        font-size: 14px;
+    }
+}
+@media (max-width: 473px){
+    .swipe-head1{
+        width: 130px;
+        /* border-radius: 3rem; */
+    }
+}

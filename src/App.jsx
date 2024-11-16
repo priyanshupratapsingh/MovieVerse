@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import './css/mediaq.css'
 // !--- swiper imports down below ---!
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
