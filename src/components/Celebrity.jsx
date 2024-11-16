@@ -25,22 +25,29 @@ const MovieCard = (props) => {
         slidesPerView={6}
         spaceBetween={50}
         breakpoints={{
-          200:{
-            // centeredSlides:true,
+          150:{
               slidesPerView: 1,
               spaceBetween: 0,
-          },
-          295:{
-              slidesPerView: 2,
+            },
+          220:{
+              slidesPerView: 1.6,
+              spaceBetween: 0,
+            },
+          310:{
+              slidesPerView: 2.1,
               spaceBetween: 0,
           },
-          440: {
-            slidesPerView: 3,
-            spaceBetween: 10,
+          372:{
+              slidesPerView: 2.5,
+              spaceBetween: 0,
+          },
+          688:{
+            slidesPerView: 3.2,
+            spaceBetween: 2,
           },
           860: {
             slidesPerView: 4,
-            spaceBetween: 20,
+            spaceBetween: 5,
           },
           1100: {
             slidesPerView: 5,
