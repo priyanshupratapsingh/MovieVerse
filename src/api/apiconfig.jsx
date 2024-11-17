@@ -23,7 +23,7 @@ export const getData = async (url) =>{
     const apiURL = baseURL + url +  apikey
     const data = await fetch(apiURL);
     const datajson = await data.json();
-    console.log(datajson);
+    // console.log(datajson);
     return datajson;
   } catch (error) {
     console.error("Failed to fetch data:", error);

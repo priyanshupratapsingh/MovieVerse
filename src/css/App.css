@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -37,9 +37,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 40px;
+    padding: 9px 40px;
     transition: 0.5s;
-    background: linear-gradient(180deg, rgba(255, 0, 0, 0.8) 25%, rgba(0, 0, 0, 0.7) 75%);
+    background: linear-gradient(180deg, rgba(255, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.9) 90%);
+    /* background-color: rgba(224, 0, 0, 0.925); */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 .head2{
@@ -74,20 +75,87 @@ body{
     font-weight: 500;
     gap: 4vw;
 }
-.menu li a{
+.menu li a {
     color: #FFFFFF;
     font-weight: bold;
+    position: relative; /* Required for positioning the underline */
+    text-decoration: none; /* Remove default underline */
     transition: color 0.3s, transform 0.3s;
-}
-.menu li a:hover{
-    font-size: 1.23rem;
-    color: #000000;;
-    /* transform: scale(20); */
-}
-
+  }
+  
+  .menu li a::after {
+    content: ''; /* Pseudo-element content */
+    position: absolute; /* Position relative to the parent link */
+    bottom: -6px; /* Adjust position to be just below the text */
+    left: 0;
+    width: 0;
+    height: 3px; /* Thickness of the underline */
+    background-color: red; /* Red underline */
+    transition: width 0.4s ease; /* Smooth width transition */
+  }
+  
+  .menu li a:hover::after {
+    width: 100%; /* Expand the underline to full width */
+  }
 .heading2{
+    font-size: 13px;
     display: flex;
     gap: 10px;
+}
+.ip{
+    width: 230px;
+    padding-left: 15px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 15px;
+    color: white;
+}
+.ibtn{
+    border: 2px solid white;
+    padding: 7px;
+    border-radius: 20px;
+    color: white;
+}
+.head-data{
+    width: 80vw;
+    margin: auto;
+}
+.genreType{
+    color: #bebebe;
+    font-size: 1.25rem;
+}
+.movieName{
+    font-size: 2.2rem;
+    color: #FFFF;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+.movieInfo{
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.movieInfo span{
+    color: red;
+}
+.btnTrailer{
+    margin-top: 1.4rem;
+}
+.btnTrailer button{
+    padding: 7px;
+    margin-right: 1rem;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    background-color: red;
+    color: #FFFFFF;
 }
 .swipe-head{
     width: 100%;
