@@ -47,7 +47,7 @@ function App() {
             <div class="title">
               <Link to="/" className='logo' >
                 <img class="title-img" src="./svg/popcorn.png" alt="logo.svg" />
-                <div className="title">
+                <div className="title2">
                   <p>MovieVerse</p>
                   <p>Insights</p>
                 </div>
@@ -63,8 +63,10 @@ function App() {
           </div>
 
           <div class="heading2">
-            <input class="ip" type="text" placeholder="search movie" />
-            <i class="fa-solid fa-magnifying-glass ibtn"></i>
+            <div class="search-container">
+              <input class="ip" type="text" placeholder="search movie" />
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
             <Link to="/"><i class="fa-solid fa-house ibtn"></i></Link>
           </div>
         </div>

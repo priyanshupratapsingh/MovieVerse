@@ -102,13 +102,40 @@ body{
     display: flex;
     gap: 10px;
 }
-.ip{
+/* .ip{
     width: 230px;
     padding-left: 15px;
     background-color: transparent;
     border: 1px solid white;
     border-radius: 15px;
     color: white;
+} */
+ /* Container to hold input and icon */
+.search-container {
+    position: relative;
+    width: 250px; /* Adjust width as needed */
+    margin-right: 5px;
+}
+
+/* Input field */
+.ip {
+    width: 100%;
+    padding: 7px 40px 7px 10px; /* Add padding to leave space for the icon */
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+/* Icon inside the input */
+.search-container i {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust to position the icon */
+    transform: translateY(-50%);
+    color: gray; /* Change color as needed */
+    font-size: 16px;
+    cursor: pointer;
 }
 .ibtn{
     border: 2px solid white;
