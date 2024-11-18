@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 // !-------------------------------!
 import { getData } from './api/apiconfig'
-import { getGenreName } from './JsCode/GenreData'
+import { getGenreName } from './components/GenreData'
 import MovieCard from './components/MovieCard';
 import Celebrity from './components/Celebrity';
 import Navbar from './components/Navbar';
