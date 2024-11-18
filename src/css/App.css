@@ -20,7 +20,6 @@ body{
     position: fixed;
     width: 100vw;
     top: 0;
-    /* left: 100; */
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -32,15 +31,14 @@ body{
     position: fixed;
     width: 100vw;
     top: 0;
-    /* left: 100; */
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 9px 40px;
+    padding: 7px 40px;
     transition: 0.5s;
-    background: linear-gradient(180deg, rgba(255, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.9) 90%);
-    /* background-color: rgba(224, 0, 0, 0.925); */
+    /* background: linear-gradient(180deg, rgba(255, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.9) 90%); */
+    background-color: black;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 .head2{
@@ -56,7 +54,7 @@ body{
     font-weight: 800;
     font-style: normal;
     font-size: 1.2rem;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: black;
     align-items: center;
     color: white;
@@ -64,6 +62,7 @@ body{
 .logo p{
     margin: 0;
     padding: 0;
+    font-size: 18px;
 }
 .title img{
     height: 2.5rem;
@@ -102,14 +101,7 @@ body{
     display: flex;
     gap: 10px;
 }
-/* .ip{
-    width: 230px;
-    padding-left: 15px;
-    background-color: transparent;
-    border: 1px solid white;
-    border-radius: 15px;
-    color: white;
-} */
+
  /* Container to hold input and icon */
 .search-container {
     position: relative;
@@ -142,6 +134,11 @@ body{
     padding: 7px;
     border-radius: 20px;
     color: white;
+}
+.ibtn:hover{
+    border: 2px solid red;
+    color: red;
+    transition: 0.4s;
 }
 .head-data{
     width: 80vw;
@@ -183,36 +180,46 @@ body{
     font-weight: 500;
     background-color: red;
     color: #FFFFFF;
+    cursor: pointer;
 }
 .swipe-head{
     width: 100%;
     height: 610px;
     background: rgb(2,3,7,0.4);
-    /* position: relative; */
     display: flex;
     align-items: center;
+}
+.swipe-head::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10%; /* Control the height of the fading texture */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)); /* Fading effect */
+    pointer-events: none; /* Ensure this does not interfere with clicks */
+    z-index: 1; /* Keep it above the image */
+}
+.fade-effect {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5)); /* Fade effect */
+    z-index: 1;
 }
 .card{
     width: 90vw;
     margin: auto;
-    /* padding: 20px 0; */
     font-family: "Poppins", serif;
-    /* font-weight: 400; */
 }
 .movie-listt{
-    /* width: 100%; */
-    /* height: 610px; */
-    /* background: rgb(2,3,7,0.4); */
-    /* position: relative; */
-    /* display: flex; */
-    /* align-items: center;  */
-    /* margin: 10px; */
     padding-top: 15px;
 }
 .swipe-head1 {
-    /* display: flex;
-    flex-direction: column; */
     width: 190px;
+    color: #FFFFFF;
 }
 .swipe-head1 img{
     width: 100%;
@@ -223,8 +230,7 @@ body{
     font-weight: 500;
     padding: 50px 0px 30px 0;
     text-transform: uppercase;
-    /* border-bottom: 1px solid red; */
-    /* justify-content: center; */
+    color: #FF0000;
 }
 .head-data1 {
     display: flex;
@@ -241,8 +247,6 @@ body{
 .swiper-pagination-bullet{
     width: 6px !important; 
     height: 6px !important;
-    /* border-radius: 0.2rem !important; */
-    /* background-color: black; */
     opacity: 0.7 !important;
 }
 .swiper-pagination-bullet-active{

@@ -67,7 +67,7 @@ const MovieCard = (props) => {
               return <>
                 {item.profile_path ?
                   <SwiperSlide key={item.id}>
-                    <Link to={`/movies/${item.id}`}  >
+                    {/* <Link to={`/movies/${item.id}`}  > */}
                       <div className="swipe-head1 swiper-slider">
 
                         <img src={imgURL + item.profile_path} alt="img.jpg" />
@@ -77,7 +77,8 @@ const MovieCard = (props) => {
                         </div>
                       </div>
 
-                    </Link></SwiperSlide> : ""
+                    {/* </Link> */}
+                    </SwiperSlide> : ""
                 }
               </>
             }

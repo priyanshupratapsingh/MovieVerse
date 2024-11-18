@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getData } from '../api/apiconfig'
-
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -25,23 +25,23 @@ const MovieCard = (props) => {
         slidesPerView={6}
         spaceBetween={10}
         breakpoints={{
-          150:{
-              slidesPerView: 1,
-              spaceBetween: 0,
-            },
-          220:{
-              slidesPerView: 1.6,
-              spaceBetween: 0,
-            },
-          310:{
-              slidesPerView: 2.1,
-              spaceBetween: 0,
+          150: {
+            slidesPerView: 1,
+            spaceBetween: 0,
           },
-          372:{
-              slidesPerView: 2.5,
-              spaceBetween: 0,
+          220: {
+            slidesPerView: 1.6,
+            spaceBetween: 0,
           },
-          688:{
+          310: {
+            slidesPerView: 2.1,
+            spaceBetween: 0,
+          },
+          372: {
+            slidesPerView: 2.5,
+            spaceBetween: 0,
+          },
+          688: {
             slidesPerView: 3.2,
             spaceBetween: 2,
           },
@@ -53,7 +53,7 @@ const MovieCard = (props) => {
             slidesPerView: 5,
             spaceBetween: 30,
           },
-          1300:{
+          1300: {
             slidesPerView: 6,
             spaceBetween: 40,
           }
@@ -64,17 +64,19 @@ const MovieCard = (props) => {
         {trendDay.length > 0 ? (
           <div className='movie-listt swiper-wrapper'>
             {trendDay.map(item => {
-              return <> 
-              {item.poster_path?
+              return <>
+                {item.poster_path ?
                   <SwiperSlide key={item.id}>
-                <div  className="swipe-head1 swiper-slider">
-                  <img src={imgURL + item.poster_path} alt="img.jpg" />
-                  <div className="head-data1">
-                    <p>{item.title? item.title:item.name }</p>
+                    <Link to={`/movies/${item.id}`}  >
+                      <div className="swipe-head1 swiper-slider">
+                        <img src={imgURL + item.poster_path} alt="img.jpg" />
+                        <div className="head-data1">
+                          <p>{item.title ? item.title : item.name}</p>
 
-                  </div>
+                        </div>
 
-                </div></SwiperSlide>: ""
+                      </div>
+                    </Link></SwiperSlide> : ""
                 }
               </>
             }

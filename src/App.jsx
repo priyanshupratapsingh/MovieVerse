@@ -14,22 +14,13 @@ import { getData } from './api/apiconfig'
 import { getGenreName } from './components/GenreData'
 import MovieCard from './components/MovieCard';
 import Celebrity from './components/Celebrity';
+import Navbar from './components/Navbar';
 
 // 1. added <link stylesheet> from font awesome cdn for icons such as: search, cross, hamburger etc 
 // 2. installed swiper by- npm i swiper then imported then above.
 function App() {
   const [trendWeek, settrendWeek] = useState([])
-  const [nav, setnav] = useState(false)
 
-  const changecolor = () => {
-    if (window.scrollY >= 600) {
-      setnav(true);
-    }
-    else {
-      setnav(false);
-    }
-  }
-  window.addEventListener('scroll', changecolor);
   const imgURL = 'https://image.tmdb.org/t/p/original/'
   useEffect(() => {
     const url = '/trending/movie/week?language=en-US'
@@ -40,37 +31,7 @@ function App() {
 
   return (
     <div>
-      <header onScroll={() => { setnav(!nav) }}>
-        <div class={nav ? "heading-scroll" : "heading"}>
-          <div className="head2">
-
-            <div class="title">
-              <Link to="/" className='logo' >
-                <img class="title-img" src="./svg/popcorn.png" alt="logo.svg" />
-                <div className="title2">
-                  <p>MovieVerse</p>
-                  <p>Insights</p>
-                </div>
-              </Link>
-            </div>
-            <div >
-              <ul className="menu">
-                {/* <li><Link to="/">Home</Link></li> */}
-                <li><Link to="/">Movies</Link></li>
-                <li><Link to="/">TV Shows</Link></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="heading2">
-            <div class="search-container">
-              <input class="ip" type="text" placeholder="search movie" />
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            <Link to="/"><i class="fa-solid fa-house ibtn"></i></Link>
-          </div>
-        </div>
-      </header>
+      <Navbar/>
 
       <Swiper
         spaceBetween={30}
@@ -93,7 +54,8 @@ function App() {
             {trendWeek.map(item => {
               return <SwiperSlide key={item.id}>
                 <div className="swipe-head">
-                  <img src={imgURL + item.poster_path} alt="img.jpg" />
+                  <img src={imgURL + (item.backdrop_path?item.backdrop_path:item.poster_path)} alt="img.jpg" />
+                  {/* <div class="fade-effect"></div> */}
                   <div className="head-data">
                     {/* getGenreName is a Function imported from GenreData.jsx*/}
                     <div className="genreType">
@@ -108,7 +70,8 @@ function App() {
                       <p><span>Release Data:</span> {item.release_date}</p>
                     </div>
                     <div className="btnTrailer">
-                      <button>View Description</button>
+                    <Link to={`/movies/${item.id}`}  > <button>View Description</button> </Link>
+                      
                       <button><i class="fa-solid fa-play"></i> Watch Trailer</button>
                     </div>
                   </div>
