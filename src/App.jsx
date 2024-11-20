@@ -86,14 +86,14 @@ function App() {
         )}
       </Swiper>
 
-      <MovieCard title="trending now" url='/trending/all/day?language=en-US' />
+      <MovieCard title="trending now" type="movie" url='/trending/movie/day?language=en-US' />
       {/* <MovieCard title="Indian movies" url = '/discover/movie?language=hindi&page=1&sort_by=popularity.desc&watch_region=India'/> */}
-      <MovieCard title="popular movies" url='/discover/movie?language=en-US&page=1&sort_by=popularity.desc' />
-      <MovieCard title="popular tv-shows" url='/discover/tv?language=en-US&page=1&sort_by=popularity.desc' />
+      <MovieCard title="popular movies" type="movie" url='/discover/movie?language=en-US&page=1&sort_by=popularity.desc' />
+      <MovieCard title="popular tv-shows" type="tv" url='/discover/tv?language=en-US&page=1&sort_by=popularity.desc' />
       <Celebrity title="popular celebrities" url='/person/popular?language=en-US&page=1' />
-      <MovieCard title="Highest grossing movies" url='/discover/movie?language=en-US&page=1&sort_by=revenue.desc&year=2024' />
-      <MovieCard title="top rated movies" url='/discover/movie?language=en-US&page=1&primary_release_year=2024&sort_by=vote_average.desc' />
-      <MovieCard title="top rated tv-shows" url='/discover/tv?language=en-US&page=1&primary_release_year=2024&sort_by=vote_average.desc' />
+      <MovieCard title="Highest grossing movies" type="movie" url='/discover/movie?language=en-US&page=1&sort_by=revenue.desc&year=2024' />
+      <MovieCard title="top rated movies" type="movie" url='/discover/movie?language=en-US&page=1&primary_release_year=2024&sort_by=vote_average.desc' />
+      <MovieCard title="top rated tv-shows" type="tv" url='/discover/tv?language=en-US&page=1&primary_release_year=2024&sort_by=vote_average.desc' />
 
     </div>
   )

@@ -22,11 +22,16 @@ export const getData = async (url) =>{
   try {
     const apiURL = baseURL + url +  apikey
     const data = await fetch(apiURL);
+    if (!data.ok) {
+      // Log error and throw if the API returns a bad status (e.g., 404)
+      console.error(`Error: ${response.status} - ${response.statusText}`);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const datajson = await data.json();
     // console.log(datajson);
     return datajson;
   } catch (error) {
-    console.error("Failed to fetch data:", error);
+    console.error("Failed to fetch data:", error.message);
     return [];  // Return an empty array if there's an error
   }
 }

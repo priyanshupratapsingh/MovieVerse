@@ -15,9 +15,9 @@ const MovieCard = (props) => {
   const imgURL = 'https://image.tmdb.org/t/p/w200/'
   useEffect(() => {
     const url = props.url
-
     getData(url).then((data) => { settrendDay(data.results) })
   }, [])
+
   return (
     <div className='card swiper'>
       <h2 className='movie-heading'>{props.title}</h2>
@@ -65,9 +65,9 @@ const MovieCard = (props) => {
           <div className='movie-listt swiper-wrapper'>
             {trendDay.map(item => {
               return <>
-                {item.poster_path ?
+                {item.poster_path  ?
                   <SwiperSlide key={item.id}>
-                    <Link to={`/movies/${item.id}`}  >
+                    <Link to={props.type==="movie"? `/movies/${item.id}`: `/tv/${item.id}`}  >
                       <div className="swipe-head1 swiper-slider">
                         <img src={imgURL + item.poster_path} alt="img.jpg" />
                         <div className="head-data1">
