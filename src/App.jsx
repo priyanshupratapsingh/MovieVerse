@@ -25,9 +25,11 @@ function App() {
   useEffect(() => {
     const url = '/trending/movie/week?language=en-US'
 
-    getData(url).then((data) => { settrendWeek(data.results) })
+    getData(url).then((data) => { settrendWeek(data.results) 
+      console.log(data.results)
+    })
+    
   }, [])
-  console.log(trendWeek)
 
   return (
     <div>
