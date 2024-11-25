@@ -52,7 +52,7 @@ function App() {
       >
 
         {trendWeek.length > 0 ? (
-          <div >
+          <div className='h'>
             {trendWeek.map(item => {
               return <SwiperSlide key={item.id}>
                 <div className="swipe-head">
@@ -94,8 +94,8 @@ function App() {
       <MovieCard title="popular tv-shows" type="tv" url='/discover/tv?language=en-US&page=1&sort_by=popularity.desc' />
       <Celebrity title="popular celebrities" url='/person/popular?language=en-US&page=1' />
       <MovieCard title="Highest grossing movies" type="movie" url='/discover/movie?language=en-US&page=1&sort_by=revenue.desc&year=2024' />
-      <MovieCard title="top rated movies" type="movie" url='/discover/movie?language=en-US&page=1&primary_release_year=2024&sort_by=vote_average.desc' />
-      <MovieCard title="top rated tv-shows" type="tv" url='/discover/tv?language=en-US&page=1&primary_release_year=2024&sort_by=vote_average.desc' />
+      <MovieCard title="top rated movies" type="movie" url='/discover/movie?language=en-US&page=1&sort_by=vote_average.desc' />
+      <MovieCard title="top rated tv-shows" type="tv" url='/discover/tv?language=en-US&page=1&sort_by=vote_average.desc' />
 
     </div>
   )

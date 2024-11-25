@@ -213,28 +213,54 @@ body{
     width: 90vw;
     margin: auto;
     font-family: "Poppins", serif;
+    padding: 20px 0;
 }
 .movie-listt{
     padding-top: 15px;
+
 }
 .swipe-head1 {
-    width: 190px;
+    position: relative;
+    width: 180px;
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
+    cursor: pointer;
     color: #FFFFFF;
+    overflow: hidden;
 }
 .swipe-head1 img{
     width: 100%;
     border-radius: 1.5rem;
+    object-fit: cover;
+    height: 270px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
+.swipe-head1:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7); /* Soft shadow */
+}
+.swipe-head1:hover img {
+    transform: scale(1.03); /* Slight zoom for a polished effect */
+    filter: brightness(1.2);
+}
+
 .movie-heading{
     font-size: 1.6rem;
     font-weight: 500;
-    padding: 50px 0px 30px 0;
     text-transform: uppercase;
-    color: #FF0000;
+    color: #ff0000;
+    /* text-align: center; */
+    margin: 30px 0;
 }
 .head-data1 {
     display: flex;
     justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    margin-top: 10px;
+    text-align: center;
 }
 .swipe-head img{
     width: 100%;
@@ -245,20 +271,30 @@ body{
     z-index: -1;
 }
 .swiper-pagination-bullet{
-    width: 6px !important; 
-    height: 6px !important;
-    opacity: 0.7 !important;
+    width: 7px !important;
+    height: 7px !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    opacity: 0.6 !important;
+    transition: width 0.3s ease, height 0.3s ease;
 }
 .swiper-pagination-bullet-active{
-    width: 1.5rem !important;
-    background-color: red !important;
+    width: 16px !important;
+    /* height: 14px !important; */
+    background-color: #ff0000 !important;
 }
+.swiper-slide {
+    transition: transform 0.3s ease;
+}
+.swiper-slide:hover {
+    transform: scale(1.05);
+}
+
 /* custom scrollbar */
 html::-webkit-scrollbar{
-    width: 0.4rem;
-    background-color: black;
+    width: 0.5rem;
+    /* background-color: black; */
 }
 html::-webkit-scrollbar-thumb{
-    background-color: rgba(255, 0, 0, 0.856);
+    background-color: rgba(255, 0, 0, 0.8);
     border-radius: 5rem;
 }
