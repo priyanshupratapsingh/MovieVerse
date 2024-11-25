@@ -18,12 +18,12 @@
         font-size: 1.75rem;
     }
     .swipe-head1{
-        width: 160px;
+        width: 170px;
         /* border-radius: 3rem; */
     }
     .movie-heading{
         font-size: 1.4rem;
-        padding: 30px 0px 20px 0;
+        padding:0;
     }
     .head-data{
         width: 88vw;
@@ -45,7 +45,10 @@
     }
     .search-container{
         width: 190px;
-        font-size: 10px;
+        font-size: 9px;
+    }
+    .heading2{
+        gap: 5px;
     }
     .head-data{
         width: 90vw;
@@ -72,15 +75,12 @@
         border-radius: 6px;
         font-size: 0.8rem;
     }
-    .swipe-head1{
-        width: 130px;
-        /* border-radius: 3rem; */
-    }
+
 }
 @media (max-width: 413px){
-    .ibtn{
+    /* .ibtn{
         display: none;
-    }
+    } */
     .heading{
         padding: 15px 7px;
     }
@@ -109,6 +109,12 @@
         border-radius: 5px;
         font-size: 0.75rem;
     }
+}
+@media (max-width: 403px){
+    .ibtn{
+        display: none;
+    }
+
 }
 @media (max-width: 363px){
     .title2{

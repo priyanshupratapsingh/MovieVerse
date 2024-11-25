@@ -13,6 +13,7 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination } from 'swiper/modules';
 import '../css/Data.css'
+import '../css/mediadata.css'
 import { getData } from '../api/apiconfig'
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
@@ -24,6 +25,8 @@ const Data = () => {
 
   const imgURL = 'https://image.tmdb.org/t/p/original/'
   const imgURL2 = 'https://image.tmdb.org/t/p/w200/'
+  const [similarAvailable, setSimilarAvailable] = useState(false);
+  const [recommendAvailable, setRecommendAvailable] = useState(false);
 
   const similar = `/movie/${param.movieid}/similar?language=en-US&page=1`
   const recommend = `/movie/${param.movieid}/recommendations?language=en-US&page=1`
@@ -33,6 +36,13 @@ const Data = () => {
 
     getData(url).then((data) => { setapiData(data) })
     getData(people).then((data) => { setpeopleData(data) })
+    // Check if similar and recommended data exist
+    getData(similar).then((data) => {
+      setSimilarAvailable(data.results && data.results.length > 0);
+    });
+    getData(recommend).then((data) => {
+      setRecommendAvailable(data.results && data.results.length > 0);
+    });
   }, [])
 
   const imagePath = apiData.backdrop_path || apiData.poster_path;
@@ -46,7 +56,7 @@ const Data = () => {
       <Navbar />
 
       {apiData ? (
-        <div className='allData'>
+        <div >
           <div className="headimgdivD">
             <img className='headimgD' src={imagePath ? imgURL + imagePath : "fallback_image_url_here"} alt="img.jpg" />
 
@@ -62,11 +72,11 @@ const Data = () => {
 
               </div>
               <div className="b">
-                <p>{apiData?.genres?.map(item => (
-                  <span className='genre' key={item.id}>
+                {apiData?.genres?.map(item => (
+                  <div className='genre' key={item.id}>
                     {item.name}
-                  </span>
-                ))}</p>
+                  </div>
+                ))}
               </div>
               {/* <div className="divider"></div> */}
               <div className="c">
@@ -83,9 +93,13 @@ const Data = () => {
               </div>
               <div className="divider"></div>
               <div className="e">
-                <p>Status: {apiData.status}</p>
+                <div>
+                  <p>Status: {apiData.status}</p>
+                </div>
                 <span> | </span>
-                <p>Release Date: {moment(apiData.release_date).format("Do MMMM, YYYY")}</p>
+                <div>
+                  <p>Release Date: {moment(apiData.release_date).format("Do MMMM, YYYY")}</p>
+                </div>
               </div>
               <div className="divider"></div>
               <div className="f">
@@ -107,6 +121,40 @@ const Data = () => {
                 <Swiper
                   slidesPerView={7}
                   spaceBetween={30}
+                  breakpoints={{
+                    150: {
+                      slidesPerView: 2,
+                      spaceBetween: 0,
+                    },
+                    320: {
+                      slidesPerView: 2.6,
+                      spaceBetween: 0,
+                    },
+                    387: {
+                      slidesPerView: 3,
+                      spaceBetween: 0,
+                    },
+                    447: {
+                      slidesPerView: 3.5,
+                      spaceBetween: 10,
+                    },
+                    550: {
+                      slidesPerView: 4,
+                      spaceBetween: 12,
+                    },
+                    900: {
+                      slidesPerView: 5,
+                      spaceBetween: 15,
+                    },
+                    1085: {
+                      slidesPerView: 6,
+                      spaceBetween: 30,
+                    },
+                    1280: {
+                      slidesPerView: 7,
+                      spaceBetween: 30,
+                    }
+                  }}
                   modules={[Pagination]}
                   className="mySwiper swiperData"
                 >
@@ -119,7 +167,7 @@ const Data = () => {
                             <div className="swiper-slider swiper-sliderData">
 
                               <img src={imgURL2 + item.profile_path} alt="img.jpg" />
-                              <div className="">
+                              <div className="castData">
                                 <p>{item.name}</p>
 
                               </div>
@@ -138,14 +186,17 @@ const Data = () => {
         </div>)
         : (<p>Loading data</p>)}
 
-      <div className="similarmov">
-        <MovieCard title="Similar Movies" type="movie" url={similar} />
+      {similarAvailable && (
+        <div className="similarmov">
+          <MovieCard title="Similar Movies" type="movie" url={similar} />
+        </div>
+      )}
 
-      </div>
-      <div className="recommendmov">
-        <MovieCard title="Recommended Movies" type="movie" url={recommend} />
-
-      </div>
+      {recommendAvailable && (
+        <div className="recommendmov">
+          <MovieCard title="Recommended Movies" type="movie" url={recommend} />
+        </div>
+      )}
     </div>
   )
 }

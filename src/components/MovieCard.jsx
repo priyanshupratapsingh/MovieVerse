@@ -11,13 +11,28 @@ import { Pagination } from 'swiper/modules';
 
 const MovieCard = (props) => {
   const [trendDay, settrendDay] = useState([])
+  const [filteredMovies, setFilteredMovies] = useState({});
 
   const imgURL = 'https://image.tmdb.org/t/p/w200/'
   useEffect(() => {
     const url = props.url
-    getData(url).then((data) => { settrendDay(data.results) })
+    getData(url).then((data) => { 
+      settrendDay(data.results) 
+      data.results.forEach(async (item) => {
+        const isEligible = await fetchCredits(item.id);
+        setFilteredMovies((prev) => ({ ...prev, [item.id]: isEligible }));
+      });
+    })
   }, [])
-
+  const fetchCredits = async (movieId) => {
+    const creditsUrl = `/${props.type}/${movieId}/credits?language=en-US`;
+    const credits = await getData(creditsUrl);
+    const hasDirector = credits.crew.some((person) => person.job === 'Director');
+    const hasProducer = credits.crew.some((person) => person.job === 'Producer');
+    const hasDirecting = credits.crew.some((person) => person.known_for_department === 'Directing');
+    const hasWriting = credits.crew.some((person) => person.known_for_department === 'Writing');
+    return (hasDirector && hasProducer) || (hasDirecting && hasWriting);
+  };
   return (
     <div className='card swiper'>
       <h2 className='movie-heading'>{props.title}</h2>
@@ -29,16 +44,20 @@ const MovieCard = (props) => {
             slidesPerView: 1,
             spaceBetween: 0,
           },
-          220: {
-            slidesPerView: 1.6,
+          255: {
+            slidesPerView: 1.3,
             spaceBetween: 0,
           },
-          310: {
-            slidesPerView: 2.1,
+          362: {
+            slidesPerView: 1.8,
             spaceBetween: 0,
           },
-          372: {
-            slidesPerView: 2.5,
+          455: {
+            slidesPerView: 2.2,
+            spaceBetween: 0,
+          },
+          500: {
+            slidesPerView: 2.45,
             spaceBetween: 0,
           },
           688: {
@@ -64,8 +83,10 @@ const MovieCard = (props) => {
         {trendDay.length > 0 ? (
           <div className='movie-listt swiper-wrapper'>
             {trendDay.map(item => {
+              // Check eligibility from cached filteredMovies
+              const isEligible = filteredMovies[item.id];
               return <>
-                {item.poster_path  ?
+                {item.poster_path && isEligible ?
                   <SwiperSlide key={item.id}>
                     <a href={props.type==="movie"? `/movies/${item.id}`: `/tv/${item.id}`}  >
                       <div className="swipe-head1 swiper-slider">

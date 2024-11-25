@@ -47,8 +47,10 @@ body {
 .movieData{
     /* display: flex; */
     margin: -105px auto;
+    margin-bottom: 0;
+    padding: 0 20px;
     z-index: 100;
-    width: 85vw;
+    max-width: 1180px;
     position: relative;
     display: flex;
 }
@@ -57,6 +59,7 @@ body {
 }
 .infoData{
     padding-left: 50px;
+    /* width: 75vw; */
 }
 .c, .d, .e, .f, .g{
     font-size: 1.11rem;
@@ -69,13 +72,16 @@ body {
     margin-bottom: 5px;
 }
 .genre{
-    margin-right: 10px;
+    /* margin-right: 10px; */
     padding: 6px 14px;
     border: 2px solid #FFFF;
     border-radius: 20px;
     text-align: center;
     font-size: 0.95rem;
     color: #fff;
+    margin: 5px;
+    margin-left: 0;
+    display: inline-block; /* Ensure it behaves as a block for flex */
 }
 .divider{
     background-color: #666;
@@ -84,10 +90,14 @@ body {
     margin: 20px 0;
 }
 .b{
-    padding: 15px 0 25px 0;
+    padding-bottom: 12px;
+    display: flex; /* Enable flexbox */
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 10px; /* Add consistent spacing between items */
 }
 .c{
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     /* margin-top: 10px; */
     font-size: 1.1rem;
@@ -101,10 +111,14 @@ body {
 .e, .f{
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 .g{
     margin: 0;
     padding: 0;
+}
+.g p{
+    padding-bottom: 9px;
 }
 .swiperData  {
     width: 65vw;
@@ -137,9 +151,9 @@ body {
     border-radius: 120px;
   }
 
-  .allData{
+  /* .allData{
     padding-bottom: 80px;
-  }
+  } */
 /* .similarmov{
     margin-top: 80px;
 } */

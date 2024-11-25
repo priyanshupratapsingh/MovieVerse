@@ -217,7 +217,7 @@ body{
 }
 .movie-listt{
     padding-top: 15px;
-
+    width: 100%;
 }
 .swipe-head1 {
     position: relative;
