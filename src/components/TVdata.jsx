@@ -200,13 +200,13 @@ const TVdata = () => {
         : (<p>Loading data</p>)}
       {similarAvailable && (
         <div className="similarmov">
-          <MovieCard title="Similar Movies" type="movie" url={similar} />
+          <MovieCard title="Similar Movies" type="tv" url={similar} />
         </div>
       )}
 
       {recommendAvailable && (
         <div className="recommendmov">
-          <MovieCard title="Recommended Movies" type="movie" url={recommend} />
+          <MovieCard title="Recommended Movies" type="tv" url={recommend} />
         </div>
       )}
     </div>
