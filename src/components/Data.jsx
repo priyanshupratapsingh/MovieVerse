@@ -18,7 +18,7 @@ import { getData } from '../api/apiconfig'
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
 const Data = () => {
-  const param = useParams();
+  const {movieid} = useParams();
 
   const [apiData, setapiData] = useState({})
   const [peopleData, setpeopleData] = useState({})
@@ -28,11 +28,11 @@ const Data = () => {
   const [similarAvailable, setSimilarAvailable] = useState(false);
   const [recommendAvailable, setRecommendAvailable] = useState(false);
 
-  const similar = `/movie/${param.movieid}/similar?language=en-US&page=1`
-  const recommend = `/movie/${param.movieid}/recommendations?language=en-US&page=1`
+  const similar = `/movie/${movieid}/similar?language=en-US&page=1`
+  const recommend = `/movie/${movieid}/recommendations?language=en-US&page=1`
   useEffect(() => {
-    const url = `/movie/${param.movieid}?language=en-US`
-    const people = `/movie/${param.movieid}/credits?language=en-US`
+    const url = `/movie/${movieid}?language=en-US`
+    const people = `/movie/${movieid}/credits?language=en-US`
 
     getData(url).then((data) => { setapiData(data) })
     getData(people).then((data) => { setpeopleData(data) })
@@ -43,12 +43,12 @@ const Data = () => {
     getData(recommend).then((data) => {
       setRecommendAvailable(data.results && data.results.length > 0);
     });
-  }, [])
+  },[movieid])
 
   const imagePath = apiData.backdrop_path || apiData.poster_path;
   const posterPath = apiData.poster_path || apiData.backdrop_path;
-  // console.log("Params:"+ param);
-  // console.dir(param);
+  // console.log("Params:"+ ;
+  // console.dir(;
   console.dir(peopleData)
   // console.dir(apiData);
   return (

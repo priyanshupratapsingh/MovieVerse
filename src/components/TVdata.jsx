@@ -19,7 +19,7 @@ import { getData } from '../api/apiconfig'
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
 const TVdata = () => {
-  const param = useParams();
+  const {tvid} = useParams();
 
   const [apiData, setapiData] = useState({})
   const [peopleData, setpeopleData] = useState({})
@@ -29,11 +29,11 @@ const TVdata = () => {
   const imgURL = 'https://image.tmdb.org/t/p/original/'
   const imgURL2 = 'https://image.tmdb.org/t/p/w200/'
 
-  const similar = `/tv/${param.tvid}/similar?language=en-US&page=1`
-  const recommend = `/tv/${param.tvid}/recommendations?language=en-US&page=1`
+  const similar = `/tv/${tvid}/similar?language=en-US&page=1`
+  const recommend = `/tv/${tvid}/recommendations?language=en-US&page=1`
   useEffect(() => {
-    const url = `/tv/${param.tvid}?language=en-US`
-    const people = `/tv/${param.tvid}/credits?language=en-US`
+    const url = `/tv/${tvid}?language=en-US`
+    const people = `/tv/${tvid}/credits?language=en-US`
 
     getData(url).then((data) => { setapiData(data) })
     getData(people).then((data) => { setpeopleData(data) })
@@ -44,7 +44,7 @@ const TVdata = () => {
     getData(recommend).then((data) => {
       setRecommendAvailable(data.results && data.results.length > 0);
     });
-  }, [])
+  }, [tvid])
 
   const imagePath = apiData.backdrop_path || apiData.poster_path;
   const posterPath = apiData.poster_path || apiData.backdrop_path;
@@ -53,8 +53,8 @@ const TVdata = () => {
     console.error("No image path available for this movie.");
   }
 
-  // console.log("Params:"+ param);
-  // console.dir(param);
+  // console.log("Params:"+ ;
+  // console.dir(;
   // console.log("Data here is ss: " + apiData)
   console.dir(apiData);
   return (
