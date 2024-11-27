@@ -16,6 +16,9 @@ body{
     color: #FFFFFF;
 
 }
+.loading{
+    margin-top: 20vh;
+}
 .heading{
     position: fixed;
     width: 100vw;

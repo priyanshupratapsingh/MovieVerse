@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect,lazy, Suspense } from 'react'
 import './css/App.css'
 import './css/mediaq.css'
 // !--- swiper imports down below ---!
@@ -12,8 +12,8 @@ import { Autoplay, Pagination } from 'swiper/modules';
 // !-------------------------------!
 import { getData } from './api/apiconfig'
 import { getGenreName } from './components/GenreData'
-import MovieCard from './components/MovieCard';
-import Celebrity from './components/Celebrity';
+const MovieCard = lazy(() => import('./components/MovieCard'));
+const Celebrity = lazy(() => import('./components/Celebrity'));
 import Navbar from './components/Navbar';
 
 // 1. added <link stylesheet> from font awesome cdn for icons such as: search, cross, hamburger etc 
@@ -40,8 +40,8 @@ function App() {
         // loop={true}
         centeredSlides={true}
         autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
+          delay: 5000,
+          disableOnInteraction: true,
         }}
         pagination={{
           clickable: true,
@@ -61,7 +61,7 @@ function App() {
   <img 
     src={`${imgURL}${item.backdrop_path}`} 
     alt="img.jpg" 
-    loading="lazy"
+    // loading="lazy"
     srcset={`${imgURL}${item.backdrop_path}?w=320 320w, 
     ${imgURL}${item.backdrop_path}?w=640 640w, 
     ${imgURL}${item.backdrop_path}?w=1280 1280w`}
@@ -96,18 +96,22 @@ sizes="(max-width: 768px) 320px, (max-width: 1200px) 640px, 1280px"
             )}
           </div >
         ) : (
-          <p>Loading data...</p>
+          <div className='loading'>Loading data...</div>
         )}
       </Swiper>
-
+      <Suspense fallback={<div>Loading...</div>}>
       <MovieCard title="trending now" type="movie" url='/trending/movie/day?language=en-US' />
       {/* <MovieCard title="Indian movies" url = '/discover/movie?language=hindi&page=1&sort_by=popularity.desc&watch_region=India'/> */}
       <MovieCard title="popular movies" type="movie" url='/discover/movie?language=en-US&page=1&sort_by=popularity.desc' />
+      </Suspense>
       <MovieCard title="popular tv-shows" type="tv" url='/discover/tv?language=en-US&page=1&sort_by=popularity.desc' />
+      
+      <Suspense fallback={<div>Loading...</div>}>
       <Celebrity title="popular celebrities" url='/person/popular?language=en-US&page=1' />
       <MovieCard title="Highest grossing movies" type="movie" url='/discover/movie?language=en-US&page=1&sort_by=revenue.desc&year=2024' />
       <MovieCard title="top rated movies" type="movie" url='/discover/movie?language=en-US&page=1&sort_by=vote_average.desc' />
       <MovieCard title="top rated tv-shows" type="tv" url='/discover/tv?language=en-US&page=1&sort_by=vote_average.desc' />
+      </Suspense>
 
     </div>
   )
