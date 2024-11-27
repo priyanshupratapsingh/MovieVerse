@@ -107,8 +107,14 @@ body{
     font-size: 13px;
     display: flex;
     gap: 10px;
+    align-items: center;
+    align-self: center;
 }
-
+form{
+    margin: 0;
+    padding: 0;
+    height: 32px;
+}
  /* Container to hold input and icon */
 .search-container {
     position: relative;
@@ -127,14 +133,18 @@ body{
 }
 
 /* Icon inside the input */
-.search-container i {
+.search-container button{
     position: absolute;
     top: 50%;
     right: 10px; /* Adjust to position the icon */
     transform: translateY(-50%);
-    color: gray; /* Change color as needed */
+    background-color: #fff;
+    border: none;
     font-size: 16px;
     cursor: pointer;
+}
+.search-container i{
+    color: gray; 
 }
 .ibtn{
     border: 2px solid white;

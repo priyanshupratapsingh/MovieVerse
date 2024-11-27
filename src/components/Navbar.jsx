@@ -37,10 +37,14 @@ const Navbar = () => {
           </div>
 
           <div class="heading2">
-            <div class="search-container">
-              <input class="ip" type="text" placeholder="search movie" />
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+            <form >
+              <div class="search-container">
+                <input class="ip" type="text" placeholder="search movie" />
+                <button>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+            </form>
             <Link to="/"><i class="fa-solid fa-house ibtn"></i></Link>
           </div>
         </div>
