@@ -24,6 +24,13 @@ const MovieCard = (props) => {
       });
     })
   }, [])
+    // Function to scroll to top
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // Optional smooth scrolling
+      });
+    };
   const fetchCredits = async (movieId) => {
     const creditsUrl = `/${props.type}/${movieId}/credits?language=en-US`;
     const credits = await getData(creditsUrl);
@@ -33,6 +40,7 @@ const MovieCard = (props) => {
     const hasWriting = credits.crew.some((person) => person.known_for_department === 'Writing');
     return (hasDirector && hasProducer) || (hasDirecting && hasWriting);
   };
+  
   return (
     <div className='card swiper'>
       <h2 className='movie-heading'>{props.title}</h2>
@@ -88,7 +96,7 @@ const MovieCard = (props) => {
               return <>
                 {item.poster_path && isEligible ?
                   <SwiperSlide key={item.id}>
-                    <Link to={props.type==="movie"? `/movies/${item.id}`: `/tv/${item.id}`}  >
+                    <Link to={props.type==="movie"? `/movies/${item.id}`: `/tv/${item.id}`}  onClick={scrollToTop}>
                       <div className="swipe-head1 swiper-slider">
                         <img src={imgURL + item.poster_path} alt="img.jpg" />
                         <div className="head-data1">
