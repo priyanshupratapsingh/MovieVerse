@@ -56,7 +56,19 @@ function App() {
             {trendWeek.map(item => {
               return <SwiperSlide key={item.id}>
                 <div className="swipe-head">
-                  <img src={imgURL + (item.backdrop_path?item.backdrop_path:item.poster_path)} alt="img.jpg" />
+                <picture>
+  <source srcSet={`${imgURL}${item.backdrop_path}.webp`} type="image/webp" />
+  <img 
+    src={`${imgURL}${item.backdrop_path}`} 
+    alt="img.jpg" 
+    loading="lazy"
+    srcset={`${imgURL}${item.backdrop_path}?w=320 320w, 
+    ${imgURL}${item.backdrop_path}?w=640 640w, 
+    ${imgURL}${item.backdrop_path}?w=1280 1280w`}
+sizes="(max-width: 768px) 320px, (max-width: 1200px) 640px, 1280px"
+    className='head-img'
+  />
+</picture>
                   {/* <div class="fade-effect"></div> */}
                   <div className="head-data">
                     {/* getGenreName is a Function imported from GenreData.jsx*/}
